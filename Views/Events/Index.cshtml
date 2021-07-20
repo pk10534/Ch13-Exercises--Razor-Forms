@@ -5,15 +5,38 @@
 </p>
 
 @if (ViewBag.events.Count == 0)
-            {
-                <p>No events yet!</p>
+{
+    <p>No events yet!</p>
 }
 
+<!--
 <ul>
-    @foreach (string meeting in ViewBag.events)
+    foreach (string meeting in ViewBag.events)
             {
-                <li>@meeting</li>
+                <li>meeting</li>
             }
 </ul>
+    -->
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Event</th>
+            <th scope="col">Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (KeyValuePair<string, string> item in ViewBag.Events)
+        {
+
+        <tr>
+            <td>@item.Key</td>
+            <td>@item.Value</td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+
 
 <partial name="/Views/Shared/_LinkListPartial.cshtml" />
